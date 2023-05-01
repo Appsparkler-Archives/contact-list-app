@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactList should take the correct snapshot when all information is available 1`] = `
+<ul
+  className="MuiList-root MuiList-padding css-1mcnwpj-MuiList-root"
+>
+  <li
+    className="MuiListItem-root MuiListItem-gutters MuiListItem-padding MuiListItem-alignItemsFlexStart css-hhvo2v-MuiListItem-root"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemAvatar-root MuiListItemAvatar-alignItemsFlexStart css-1m6607n-MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circular css-1wlk0hk-MuiAvatar-root"
+      >
+        <img
+          alt="Remy Sharp"
+          className="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+          src="https://plus.unsplash.com/premium_photo-1671641797679-3b680a7d2109?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+      >
+        Ali Connors
+      </span>
+      <span
+        className="MuiTypography-root MuiTypography-body2 css-1phucj-MuiTypography-root"
+      >
+        SurveyHeart
+      </span>
+    </div>
+  </li>
+  <li
+    className="MuiDivider-root MuiDivider-inset css-uls1yk-MuiDivider-root"
+    role="separator"
+  />
+</ul>
+`;

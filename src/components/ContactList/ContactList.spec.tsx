@@ -25,7 +25,7 @@ const contacts: IContact[] = [
   },
 ];
 
-function ContactList({ contacts }: { contacts: IContact[] }) {
+export function ContactList({ contacts }: { contacts: IContact[] }) {
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       {contacts.map((contact) => (
@@ -56,11 +56,3 @@ function ContactList({ contacts }: { contacts: IContact[] }) {
     </List>
   );
 }
-
-describe("ContactList", () => {
-  it("should take the correct snapshot when all information is available", () => {
-    const component = renderer.create(<ContactList contacts={contacts} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});

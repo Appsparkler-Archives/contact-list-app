@@ -16,6 +16,7 @@ describe("SelectField FC", () => {
         selectedOption={standardSelectFieldOptions[0].value}
         onChange={noop}
         label={"Gender"}
+        name="gender"
       />
     );
     const snapshot = component.toJSON();
@@ -31,6 +32,7 @@ describe("SelectField FC", () => {
         selectedOption={standardSelectFieldOptions[0].value}
         onChange={handleChange}
         label={"Gender"}
+        name="gender"
       />
     );
     expect(screen.getByLabelText(/Gender/)).toBeTruthy();
@@ -39,6 +41,6 @@ describe("SelectField FC", () => {
     const maleMenuItem = screen.getByText("Male");
     expect(maleMenuItem).toBeVisible();
     fireEvent.click(maleMenuItem);
-    expect(handleChange).toBeCalledWith("male");
+    expect(handleChange).toBeCalledWith("gender", "male");
   });
 });

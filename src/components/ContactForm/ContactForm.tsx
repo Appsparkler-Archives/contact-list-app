@@ -1,12 +1,19 @@
-import { Box, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { TContactFormFC } from "types/components/ContactForm";
 import { noop } from "lodash/fp";
 import { StandardSelectField } from "components/StandardSelectField/StandardSelectField";
 
-export const ContactForm: TContactFormFC = ({ contact }) => {
+export const ContactForm: TContactFormFC = ({
+  contact,
+  submitBtnTitle,
+  formTitle,
+  onClickSubmit = noop,
+  onClickCancel = noop,
+}) => {
   return (
     <form>
       <Box gap={2} flexDirection={"column"} display={"flex"}>
+        <Typography variant="h5">{formTitle}</Typography>
         <TextField
           fullWidth
           label="Name"
@@ -51,6 +58,18 @@ export const ContactForm: TContactFormFC = ({ contact }) => {
           variant="standard"
           value={contact.company}
         />
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"space-around"}
+        >
+          <Button size="large" variant="outlined">
+            CANCEL
+          </Button>
+          <Button variant="contained" size="large">
+            {submitBtnTitle}
+          </Button>
+        </Box>
       </Box>
     </form>
   );

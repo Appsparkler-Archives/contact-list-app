@@ -22,6 +22,8 @@ export const contactForm: Story = {
       company: "PS",
       email: "appsparkler@gmail.com",
     },
+    submitBtnTitle: "Edit",
+    formTitle: "Edit Contact",
     // contacts,
   },
 };

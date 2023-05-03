@@ -12,7 +12,13 @@ describe("ContactForm component", () => {
       type: "business",
     };
     const component = renderer.create(
-      <ContactForm contact={contact} onChange={noop} />
+      <ContactForm
+        contact={contact}
+        submitBtnTitle={"Edit"}
+        formTitle={"Edit Contact"}
+        onClickSubmit={noop}
+        onClickCancel={noop}
+      />
     );
     const snapshot = component.toJSON();
     expect(snapshot).toMatchSnapshot();

@@ -1,42 +1,17 @@
 import renderer from "react-test-renderer";
-import { TStandardSelectFieldFC } from "types/components/StandardSelectField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { standardSelectFieldOptions } from "data";
 import { noop } from "lodash/fp";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { StandardSelectField } from "./StandardSelectField";
+import "@testing-library/jest-dom";
 
-const SelectField: TStandardSelectFieldFC = ({
-  selectedOption,
-  onChange,
-  options,
-  label,
-}) => {
-  return (
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-      <InputLabel id="demo-simple-select-standard-label">{label}</InputLabel>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        value={selectedOption}
-        onChange={onChange}
-        label="Age"
-        required
-      >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            <em>{option.name}</em>
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
-};
+afterEach(cleanup);
 
 describe("SelectField FC", () => {
   it("should match snapshot", async () => {
     const component = renderer.create(
-      <SelectField
+      <StandardSelectField
+        id="standard-select-field"
         options={standardSelectFieldOptions}
         selectedOption={standardSelectFieldOptions[0].value}
         onChange={noop}
@@ -45,5 +20,25 @@ describe("SelectField FC", () => {
     );
     const snapshot = component.toJSON();
     expect(snapshot).toMatchSnapshot();
+  });
+
+  test("onChange event handler is called with selected value", async () => {
+    const handleChange = jest.fn();
+    render(
+      <StandardSelectField
+        id={"standard-select-field"}
+        options={standardSelectFieldOptions}
+        selectedOption={standardSelectFieldOptions[0].value}
+        onChange={handleChange}
+        label={"Gender"}
+      />
+    );
+    expect(screen.getByLabelText(/Gender/)).toBeTruthy();
+    const femaleMenuItem = screen.getByRole("button");
+    fireEvent.mouseDown(femaleMenuItem);
+    const maleMenuItem = screen.getByText("Male");
+    expect(maleMenuItem).toBeVisible();
+    fireEvent.click(maleMenuItem);
+    expect(handleChange).toBeCalledWith("male");
   });
 });

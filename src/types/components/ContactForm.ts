@@ -1,4 +1,4 @@
-import { IContactForm } from "types/data/contactForm";
+import { IContactForm } from "types";
 
 export type TContactFormFC = React.FC<{
   contact: IContactForm;

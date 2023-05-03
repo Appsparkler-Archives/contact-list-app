@@ -9,14 +9,24 @@ export const ContactForm: TContactFormFC = ({
   contact,
   submitBtnTitle,
   formTitle,
-  onClickSubmit = noop,
-  onClickCancel = noop,
+  onSubmit = noop,
+  onCancel = noop,
 }) => {
   const [contactData, setContactData] = useState<IContactFormData>(contact);
 
-  const handleSubmit = useCallback<
-    React.FormEventHandler<HTMLFormElement>
-  >(() => {}, []);
+  const handleSubmit = useCallback<React.FormEventHandler<HTMLFormElement>>(
+    (event) => {
+      event.preventDefault();
+      onSubmit(contactData);
+    },
+    [contactData, onSubmit]
+  );
+
+  const handleCancel = useCallback<
+    React.MouseEventHandler<HTMLButtonElement>
+  >(() => {
+    onCancel();
+  }, [onCancel]);
 
   const handleChangeTextField = useCallback<
     React.ChangeEventHandler<HTMLInputElement>
@@ -101,9 +111,15 @@ export const ContactForm: TContactFormFC = ({
           justifyContent={"space-around"}
           mt={3}
         >
-          <Button size="large" variant="outlined">
+          <Button
+            type="button"
+            size="large"
+            variant="outlined"
+            onClick={handleCancel}
+          >
             CANCEL
           </Button>
+
           <Button variant="contained" size="large" type="submit">
             {submitBtnTitle}
           </Button>

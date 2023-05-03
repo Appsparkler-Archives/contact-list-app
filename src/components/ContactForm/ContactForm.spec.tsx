@@ -16,8 +16,8 @@ describe("ContactForm component", () => {
         contact={contact}
         submitBtnTitle={"Edit"}
         formTitle={"Edit Contact"}
-        onClickSubmit={noop}
-        onClickCancel={noop}
+        onSubmit={noop}
+        onCancel={noop}
       />
     );
     const snapshot = component.toJSON();

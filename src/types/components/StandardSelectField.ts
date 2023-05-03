@@ -1,12 +1,14 @@
+import { SelectChangeEvent } from "@mui/material";
 import React from "react";
 
 export interface IStandSelectFieldOptionItem {
-  key: string | number;
+  name: string | number;
   value: string | number;
 }
 
 export type TStandardSelectFieldFC = React.FC<{
   options: IStandSelectFieldOptionItem[];
-  selectedOptions: string | number;
-  onChange: (newValue: IStandSelectFieldOptionItem) => void;
+  selectedOption: string | number;
+  label: string;
+  onChange: (event: SelectChangeEvent<any>, child: React.ReactNode) => void;
 }>;

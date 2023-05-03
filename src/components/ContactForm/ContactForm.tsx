@@ -2,6 +2,8 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { TContactFormFC } from "types/components/ContactForm";
 import { noop } from "lodash/fp";
 import { StandardSelectField } from "components/StandardSelectField/StandardSelectField";
+import { useCallback, useState } from "react";
+import { IContactFormData } from "types";
 
 export const ContactForm: TContactFormFC = ({
   contact,
@@ -10,27 +12,35 @@ export const ContactForm: TContactFormFC = ({
   onClickSubmit = noop,
   onClickCancel = noop,
 }) => {
+  const [contactData, setContactData] = useState<IContactFormData>(contact);
+
+  const handleSubmit = useCallback<
+    React.FormEventHandler<HTMLFormElement>
+  >(() => {}, []);
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Box gap={2} flexDirection={"column"} display={"flex"}>
         <Typography variant="h5">{formTitle}</Typography>
         <TextField
           fullWidth
           label="Name"
           variant="standard"
-          value={contact.name}
+          value={contactData.name}
+          required
         />
         <TextField
           fullWidth
           label="Mobile"
           variant="standard"
-          value={contact.mobile}
+          value={contactData.mobile}
+          required
         />
         <TextField
           fullWidth
           label="Email"
           variant="standard"
-          value={contact.email}
+          value={contactData.email}
         />
         <StandardSelectField
           options={[
@@ -40,7 +50,7 @@ export const ContactForm: TContactFormFC = ({
           id="contact-field--gender"
           label="Gender"
           onChange={noop}
-          selectedOption={contact.gender}
+          selectedOption={contactData.gender}
         />
         <StandardSelectField
           options={[
@@ -50,13 +60,13 @@ export const ContactForm: TContactFormFC = ({
           id="contact-field--type"
           label="Type"
           onChange={noop}
-          selectedOption={contact.type}
+          selectedOption={contactData.type}
         />
         <TextField
           fullWidth
           label="Company"
           variant="standard"
-          value={contact.company}
+          value={contactData.company}
         />
         <Box
           display={"flex"}

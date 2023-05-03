@@ -20,7 +20,9 @@ export const StandardSelectField: TStandardSelectFieldFC = ({
   );
   return (
     <FormControl variant="standard" fullWidth>
-      <InputLabel id={id}>{label}</InputLabel>
+      <InputLabel required id={id}>
+        {label}
+      </InputLabel>
       <Select<string>
         labelId={id}
         value={selectedOption}

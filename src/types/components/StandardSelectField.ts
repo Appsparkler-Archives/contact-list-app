@@ -11,10 +11,15 @@ export type TSelectChangeEventHandler<T = string> = (
   child: React.ReactNode
 ) => void;
 
+export interface IStandardSelectFieldChangeHandler {
+  (name: string, newValue: string): void;
+}
+
 export type TStandardSelectFieldFC = React.FC<{
   id: string;
   options: IStandSelectFieldOptionItem[];
+  name: string;
   selectedOption: string;
   label: string;
-  onChange: (newValue: string) => void;
+  onChange: IStandardSelectFieldChangeHandler;
 }>;

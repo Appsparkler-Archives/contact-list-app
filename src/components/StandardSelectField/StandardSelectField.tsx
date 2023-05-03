@@ -10,11 +10,12 @@ export const StandardSelectField: TStandardSelectFieldFC = ({
   onChange,
   options,
   label,
+  name,
   id,
 }) => {
   const handleChange = useCallback<TSelectChangeEventHandler>(
-    ({ target: { value } }) => {
-      onChange(value);
+    ({ target: { value, name } }) => {
+      onChange(name, value);
     },
     [onChange]
   );
@@ -29,6 +30,7 @@ export const StandardSelectField: TStandardSelectFieldFC = ({
         onChange={handleChange}
         label={label}
         required
+        name={name}
       >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>

@@ -30,7 +30,7 @@ export const StandardSelectField: TStandardSelectFieldFC = ({
       >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
-            <em>{option.name}</em>
+            {option.name}
           </MenuItem>
         ))}
       </Select>

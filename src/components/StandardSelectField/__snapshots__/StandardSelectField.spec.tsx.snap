@@ -28,9 +28,7 @@ exports[`SelectField FC should match snapshot 1`] = `
       role="button"
       tabIndex={0}
     >
-      <em>
-        Female
-      </em>
+      Female
     </div>
     <input
       aria-hidden={true}

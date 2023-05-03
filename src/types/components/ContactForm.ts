@@ -1,11 +1,11 @@
-import { IContactForm } from "types";
+import { IContactFormData } from "types";
 
 export type TContactFormFC = React.FC<{
-  contact: IContactForm;
+  contact: IContactFormData;
   submitBtnTitle: string;
   formTitle: string;
 
   // event handlers
-  onClickSubmit: (contactData: IContactForm) => void;
+  onClickSubmit: (contactData: IContactFormData) => void;
   onClickCancel: () => void;
 }>;

@@ -1,4 +1,4 @@
-export interface IContactForm {
+export interface IContactFormData {
   name: string;
   mobile: string;
   gender: "male" | "female";

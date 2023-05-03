@@ -1,11 +1,11 @@
 import renderer from "react-test-renderer";
-import { IContactForm } from "types/data/contactForm";
+import { IContactFormData } from "types/data/contactForm";
 import { noop } from "lodash/fp";
 import { ContactForm } from "./ContactForm";
 
 describe("ContactForm component", () => {
   test("match snapshot", async () => {
-    const contact: IContactForm = {
+    const contact: IContactFormData = {
       name: "",
       gender: "male",
       mobile: "",

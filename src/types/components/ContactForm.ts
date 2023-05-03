@@ -6,6 +6,6 @@ export type TContactFormFC = React.FC<{
   formTitle: string;
 
   // event handlers
-  onClickSubmit: (contactData: IContactFormData) => void;
-  onClickCancel: () => void;
+  onSubmit: (contactData: IContactFormData) => void;
+  onCancel: () => void;
 }>;

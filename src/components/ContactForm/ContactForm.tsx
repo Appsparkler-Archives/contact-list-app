@@ -75,6 +75,14 @@ export const ContactForm: TContactFormFC = ({
           onChange={handleChangeTextField}
           name="email"
         />
+        <TextField
+          fullWidth
+          label="Address"
+          variant="standard"
+          value={contactData.address}
+          onChange={handleChangeTextField}
+          name="address"
+        />
         <StandardSelectField
           options={[
             { name: "Female", value: "female" },

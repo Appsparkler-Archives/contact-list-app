@@ -18,5 +18,6 @@ export const standardSelectField: Story = {
     label: "Gender",
     options: standardSelectFieldOptions,
     selectedOption: standardSelectFieldOptions[0].value,
+    name: "gender",
   },
 };

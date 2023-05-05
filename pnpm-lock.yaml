@@ -15,11 +15,14 @@ specifiers:
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
   '@types/jest': ^27.5.2
+  '@types/lodash': ^4.14.194
   '@types/node': ^16.18.25
   '@types/react': ^18.2.0
   '@types/react-dom': ^18.2.1
   '@types/react-test-renderer': ^18.0.0
+  '@types/testing-library__jest-dom': ^5.14.5
   babel-plugin-named-exports-order: ^0.0.2
+  lodash: ^4.17.21
   prop-types: ^15.8.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -39,6 +42,7 @@ dependencies:
   '@types/node': 16.18.25
   '@types/react': 18.2.0
   '@types/react-dom': 18.2.1
+  lodash: 4.17.21
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_ya5236z2gi3j5iprsggmob3hu4
@@ -55,7 +59,9 @@ devDependencies:
   '@storybook/react-webpack5': 7.0.7_ofh3ol7nxwllpwwqncehy37754
   '@storybook/testing-library': 0.0.14-next.2
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+  '@types/lodash': 4.14.194
   '@types/react-test-renderer': 18.0.0
+  '@types/testing-library__jest-dom': 5.14.5
   babel-plugin-named-exports-order: 0.0.2
   prop-types: 15.8.1
   react-test-renderer: 18.2.0_react@18.2.0
@@ -3922,7 +3928,6 @@ packages:
     dependencies:
       jest-matcher-utils: 27.5.1
       pretty-format: 27.5.1
-    dev: false
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -4073,7 +4078,6 @@ packages:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
       '@types/jest': 27.5.2
-    dev: false
 
   /@types/trusted-types/2.0.3:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}

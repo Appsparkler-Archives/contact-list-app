@@ -112,5 +112,10 @@ describe("ContactForm component", () => {
     const createButton = screen.getByRole("button", { name: "Create" });
     fireEvent.click(createButton);
     expect(handleSubmit).toHaveBeenCalledWith(updatedContact);
+
+    // click on cancel should call the onCancel
+    const cancelButton = screen.getByRole("button", { name: /Cancel/ });
+    fireEvent.click(cancelButton);
+    expect(handleCancel).toHaveBeenCalled();
   });
 });

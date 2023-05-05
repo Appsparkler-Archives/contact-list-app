@@ -329,7 +329,7 @@ exports[`ContactForm component match snapshot 1`] = `
         tabIndex={0}
         type="button"
       >
-        CANCEL
+        Cancel
       </button>
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge css-jh47zj-MuiButtonBase-root-MuiButton-root"

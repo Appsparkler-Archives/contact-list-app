@@ -125,7 +125,7 @@ export const ContactForm: TContactFormFC = ({
             variant="outlined"
             onClick={handleCancel}
           >
-            CANCEL
+            Cancel
           </Button>
 
           <Button variant="contained" size="large" type="submit">

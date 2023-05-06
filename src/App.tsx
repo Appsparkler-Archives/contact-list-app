@@ -1,11 +1,13 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Chip, TextField, Typography } from "@mui/material";
 import "./App.css";
 import { CreateContactForm } from "components/CreateContactForm/CreateContactForm";
 import { IContactFormData } from "types";
 import { ContactList } from "components/ContactList";
-import { contacts } from "data";
+import { TAppFC } from "data/app";
+import { useMemo } from "react";
+import { noop } from "lodash/fp";
 
-export function App() {
+export const App: TAppFC = ({ contacts }) => {
   const createContact: IContactFormData = {
     gender: "female",
     mobile: "",
@@ -15,15 +17,44 @@ export function App() {
     company: "",
     email: "",
   };
+
+  const showContacts: boolean = useMemo(
+    () => contacts.length > 0,
+    [contacts.length]
+  );
+
   return (
     <Box display={"flex"} flexDirection={"column"}>
       <Typography variant="h4">Contacts</Typography>
       <TextField placeholder="Search..." sx={{ borderRadius: 10 }} />
-      <Typography variant={"h6"} mt={3}>
-        <em>No Contacts Added...</em>
-      </Typography>
 
-      <ContactList contacts={contacts} />
+      {/* info */}
+      <Box
+        display="flex"
+        flexDirection={"row"}
+        gap={2}
+        justifyContent={"center"}
+        p={2}
+      >
+        <Chip
+          onClick={noop}
+          label="21 female"
+          variant="outlined"
+          size="small"
+        />
+        <Chip label="12 male" variant="outlined" size="small" />
+        <Chip label="10 personal" variant="outlined" size="small" />
+        <Chip label="5 business" variant="outlined" size="small" />
+      </Box>
+
+      {/* contacts */}
+      {showContacts ? (
+        <ContactList contacts={contacts} />
+      ) : (
+        <Typography variant={"h6"} mt={3}>
+          <em>No Contacts Added...</em>
+        </Typography>
+      )}
 
       {/* last element */}
       <Box position={"fixed"} right={16} bottom={16}>
@@ -39,6 +70,6 @@ export function App() {
       </Box>
     </Box>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,5 @@
-import { IContact } from "types";
+import { IContactFormData } from "types";
 
 export type TAppFC = React.FC<{
-  contacts: IContact[];
+  contacts: IContactFormData[];
 }>;

@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { CreateContactForm } from "./CreateContactForm";
 
 const contact: IContactFormData = {
+  id: "ct-1",
   name: "",
   mobile: "",
   email: "",
@@ -57,6 +58,7 @@ describe("ContactForm tests", () => {
     render(<CreateContactForm {...props} />);
     openModal();
     const updatedContact: IContactFormData = {
+      id: "ct-1",
       name: "John Smith",
       mobile: "+91-333-333-443",
       company: "PS",

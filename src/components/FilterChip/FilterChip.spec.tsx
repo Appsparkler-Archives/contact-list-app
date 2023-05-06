@@ -1,35 +1,5 @@
-import { Box, Chip } from "@mui/material";
-import { useMemo } from "react";
-import { TFiltersFC } from "types/components/FilterChip";
-import { reduceContactsToFiltersInfo } from "./reduceContactsToFiltersInfo";
 import { render, screen } from "@testing-library/react";
-
-const FiltersChip: TFiltersFC = ({ contacts }) => {
-  const contactInfo = useMemo(
-    () => reduceContactsToFiltersInfo(contacts),
-    [contacts]
-  );
-  return (
-    <Box
-      display="flex"
-      flexDirection={"row"}
-      gap={2}
-      justifyContent={"center"}
-      p={2}
-    >
-      {contactInfo.map(({ count, type }) =>
-        count > 0 ? (
-          <Chip
-            key={type}
-            label={`${count} ${type}`}
-            variant="outlined"
-            size="small"
-          />
-        ) : null
-      )}
-    </Box>
-  );
-};
+import { FiltersChip } from "./FiltersChip";
 
 describe("Filters - snapshots", () => {
   it("should render nothing except wrapper", () => {
@@ -46,6 +16,7 @@ describe("Filters - snapshots", () => {
       <FiltersChip
         contacts={[
           {
+            id: "fm-1",
             gender: "female",
             mobile: "+43295834958345",
             name: "Jenny",
@@ -66,12 +37,14 @@ describe("Filters - snapshots", () => {
       <FiltersChip
         contacts={[
           {
+            id: "fm-1",
             gender: "female",
             mobile: "+43295834958345",
             name: "Jenny",
             type: "personal",
           },
           {
+            id: "fm-2",
             gender: "female",
             mobile: "+43295834958345",
             name: "Rupa",

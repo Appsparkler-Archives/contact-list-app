@@ -14,6 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const createContactForm: Story = {
   args: {
     contact: {
+      id: "m-1",
       gender: "male",
       mobile: "+91-719-8101-355",
       name: "John Smith",

@@ -1,4 +1,5 @@
 export interface IContactFormData {
+  id: string;
   name: string;
   mobile: string;
   gender: "male" | "female";
@@ -6,4 +7,5 @@ export interface IContactFormData {
   address?: string;
   email?: string;
   company?: string;
+  imgUrl?: string;
 }

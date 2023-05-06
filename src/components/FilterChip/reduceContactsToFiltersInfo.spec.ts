@@ -8,6 +8,7 @@ describe("reduceContactsToFiltersInfo", () => {
   test("it should return correct info - 1", () => {
     const contactsData: IContactFormData[] = [
       {
+        id: "fm-1",
         gender: "female",
         mobile: "3939393",
         name: "John Smith",
@@ -25,12 +26,14 @@ describe("reduceContactsToFiltersInfo", () => {
   test("it should return correct info - 2", () => {
     const contactsData: IContactFormData[] = [
       {
+        id: "fm-1",
         gender: "female",
         mobile: "3939393",
         name: "John Smith",
         type: "personal",
       },
       {
+        id: "fm-2",
         gender: "female",
         mobile: "3939393",
         name: "John Smith",

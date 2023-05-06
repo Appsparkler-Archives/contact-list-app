@@ -1,14 +1,15 @@
-import { Box, Chip, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import "./App.css";
 import { CreateContactForm } from "components/CreateContactForm/CreateContactForm";
 import { IContactFormData } from "types";
 import { ContactList } from "components/ContactList";
 import { TAppFC } from "data/app";
 import { useMemo } from "react";
-import { noop } from "lodash/fp";
+import { FiltersChip } from "components/FilterChip/FiltersChip";
 
 export const App: TAppFC = ({ contacts }) => {
   const createContact: IContactFormData = {
+    id: "",
     gender: "female",
     mobile: "",
     name: "",
@@ -29,23 +30,7 @@ export const App: TAppFC = ({ contacts }) => {
       <TextField placeholder="Search..." sx={{ borderRadius: 10 }} />
 
       {/* info */}
-      <Box
-        display="flex"
-        flexDirection={"row"}
-        gap={2}
-        justifyContent={"center"}
-        p={2}
-      >
-        <Chip
-          onClick={noop}
-          label="21 female"
-          variant="outlined"
-          size="small"
-        />
-        <Chip label="12 male" variant="outlined" size="small" />
-        <Chip label="10 personal" variant="outlined" size="small" />
-        <Chip label="5 business" variant="outlined" size="small" />
-      </Box>
+      <FiltersChip contacts={contacts} />
 
       {/* contacts */}
       {showContacts ? (

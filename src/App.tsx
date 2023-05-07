@@ -1,5 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
-import "./App.css";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { CreateContactForm } from "components/CreateContactForm/CreateContactForm";
 import { IContactFormData } from "types";
 import { ContactList } from "components/ContactList";
@@ -27,6 +26,7 @@ export const App: TAppFC = ({ contacts }) => {
   return (
     <Box display={"flex"} flexDirection={"column"}>
       <Typography variant="h4">Contacts</Typography>
+
       <TextField placeholder="Search..." sx={{ borderRadius: 10 }} />
 
       {/* info */}
@@ -36,9 +36,16 @@ export const App: TAppFC = ({ contacts }) => {
       {showContacts ? (
         <ContactList contacts={contacts} />
       ) : (
-        <Typography variant={"h6"} mt={3}>
-          <em>No Contacts Added...</em>
-        </Typography>
+        <Box display="flex" flexDirection={"column"} justifyContent={"center"}>
+          <Typography
+            color="secondary"
+            textAlign={"center"}
+            fontSize={16}
+            mt={3}
+          >
+            <em>No contacts added!!</em>
+          </Typography>
+        </Box>
       )}
 
       {/* last element */}

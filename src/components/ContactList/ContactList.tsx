@@ -3,8 +3,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { TContactListFC } from "types";
 
@@ -14,9 +12,6 @@ export const ContactList: TContactListFC = ({ contacts }) => {
       {contacts.map((contact) => (
         <React.Fragment key={contact.id}>
           <ListItem alignItems="center">
-            <ListItemAvatar>
-              <Avatar alt={"Remy Sharp"} src={contact.imgUrl} />
-            </ListItemAvatar>
             <ListItemText
               primary={contact.name}
               secondary={
@@ -33,7 +28,7 @@ export const ContactList: TContactListFC = ({ contacts }) => {
               }
             />
           </ListItem>
-          <Divider variant="inset" component="li" />
+          <Divider variant="fullWidth" component="li" />
         </React.Fragment>
       ))}
     </List>

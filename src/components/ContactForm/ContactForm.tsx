@@ -42,9 +42,9 @@ export const ContactForm: TContactFormFC = ({
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
-  };
+  }, []);
 
   const handleSubmit = useCallback<React.FormEventHandler<HTMLFormElement>>(
     (event) => {
@@ -52,14 +52,15 @@ export const ContactForm: TContactFormFC = ({
       onSubmit(contactData);
       handleClose();
     },
-    [contactData, onSubmit]
+    [contactData, handleClose, onSubmit]
   );
 
   const handleCancel = useCallback<
     React.MouseEventHandler<HTMLButtonElement>
   >(() => {
+    handleClose();
     onCancel();
-  }, [onCancel]);
+  }, [handleClose, onCancel]);
 
   const handleChangeTextField = useCallback<
     React.ChangeEventHandler<HTMLInputElement>

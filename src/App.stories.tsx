@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { App } from "./App";
-import { contacts } from "data";
+import { contactsData } from "data";
 
 const meta = {
   title: "App",
@@ -20,6 +20,6 @@ export const withoutContacts: Story = {
 
 export const withContacts: Story = {
   args: {
-    contacts,
+    contacts: contactsData.variant1,
   },
 };

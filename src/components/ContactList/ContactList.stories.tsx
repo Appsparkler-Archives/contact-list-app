@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ContactList } from "./ContactList";
-import { contacts } from "data";
+import { contactsData } from "data";
 
 const meta = {
   title: "Components/Contact List",
@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const contactList: Story = {
   args: {
-    contacts,
+    contacts: contactsData.variant1,
   },
 };

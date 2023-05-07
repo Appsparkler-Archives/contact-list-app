@@ -26,6 +26,7 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
 export const CreateContactForm: TCreateContactFormFC = ({
   contact,
   onCreate,

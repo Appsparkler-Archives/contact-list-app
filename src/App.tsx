@@ -1,10 +1,10 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { CreateContactForm } from "components/CreateContactForm/CreateContactForm";
 import { IContactFormData } from "types";
-import { ContactList } from "components/ContactList";
 import { TAppFC } from "data/app";
 import { useMemo } from "react";
 import { FiltersChip } from "components/FilterChip/FiltersChip";
+import { ContactListAccordion } from "components/ContactListAccordion/ContactListAccordion";
 
 export const App: TAppFC = ({ contacts }) => {
   const createContact: IContactFormData = {
@@ -34,7 +34,18 @@ export const App: TAppFC = ({ contacts }) => {
 
       {/* contacts */}
       {showContacts ? (
-        <ContactList contacts={contacts} />
+        <ContactListAccordion
+          contacts={contacts}
+          onEdit={function (editedContactData: IContactFormData): void {
+            throw new Error("Function not implemented.");
+          }}
+          onDelete={function (deletedContactId: string): void {
+            throw new Error("Function not implemented.");
+          }}
+          onView={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
       ) : (
         <Box display="flex" flexDirection={"column"} justifyContent={"center"}>
           <Typography

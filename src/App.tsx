@@ -38,7 +38,7 @@ export const App: TAppFC = ({ contacts }) => {
       ) : (
         <Box display="flex" flexDirection={"column"} justifyContent={"center"}>
           <Typography
-            color="secondary"
+            color="text.secondary"
             textAlign={"center"}
             fontSize={16}
             mt={3}

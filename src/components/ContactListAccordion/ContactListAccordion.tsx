@@ -12,6 +12,7 @@ import {
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { TContactListAccordionFC } from "types";
 import { DeleteContact } from "components/DeleteContact/DeleteContact";
+import { ViewContactModal } from "components/ViewContactModal/ViewContactModal";
 
 export const ContactListAccordion: TContactListAccordionFC = ({
   contacts,
@@ -37,9 +38,7 @@ export const ContactListAccordion: TContactListAccordionFC = ({
               flexDirection={"row"}
               justifyContent={"space-between"}
             >
-              <IconButton aria-label="read" color="primary">
-                <ChromeReaderModeIcon />
-              </IconButton>
+              <ViewContactModal contact={contact} />
               <ContactForm
                 onSubmit={onEdit}
                 formType={"Edit"}

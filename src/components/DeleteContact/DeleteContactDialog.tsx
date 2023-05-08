@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { AppBar, Box, Dialog, IconButton, Toolbar } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { TDeleteContactDialogFC } from "types";
+import { FullScreenModalTransition } from "components/FullScreenModalTransition/FullScreenModalTransition";
 
 export const DeleteContactDialog: TDeleteContactDialogFC = ({
   contact,
@@ -21,7 +22,12 @@ export const DeleteContactDialog: TDeleteContactDialogFC = ({
     [onDelete]
   );
   return (
-    <Dialog open={open} onClose={onClose} fullScreen>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullScreen
+      TransitionComponent={FullScreenModalTransition}
+    >
       <AppBar position="static">
         <Toolbar>
           <IconButton

@@ -24,10 +24,19 @@ export const App: TAppFC = ({ contacts }) => {
   );
 
   return (
-    <Box display={"flex"} flexDirection={"column"}>
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      p={2}
+      height={"100vh"}
+      sx={{ backgroundColor: "grey.50", position: "relative" }}
+    >
       <Typography variant="h4">Contacts</Typography>
 
-      <TextField placeholder="Search..." sx={{ borderRadius: 10 }} />
+      <TextField
+        placeholder="Search..."
+        sx={{ backgroundColor: "background.paper" }}
+      />
 
       {/* info */}
       <FiltersChip contacts={contacts} />
@@ -60,7 +69,7 @@ export const App: TAppFC = ({ contacts }) => {
       )}
 
       {/* last element */}
-      <Box position={"fixed"} right={16} bottom={16}>
+      <Box position={"absolute"} right={16} bottom={16}>
         <CreateContactForm
           onCreate={function (contact: IContactFormData): void {
             throw new Error("Function not implemented.");

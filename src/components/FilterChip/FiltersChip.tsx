@@ -23,6 +23,7 @@ export const FiltersChip: TFiltersFC = ({ contacts }) => {
             label={`${count} ${type}`}
             variant="outlined"
             size="small"
+            sx={{ backgroundColor: "background.paper" }}
           />
         ) : null
       )}

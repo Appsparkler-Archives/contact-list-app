@@ -4,3 +4,4 @@ export * from "./FilterChip";
 export * from "./CreateContactForm";
 export * from "./ContactListAccordion";
 export * from "./ContactForm";
+export * from "./DeleteContact";

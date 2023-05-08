@@ -3,16 +3,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { AppBar, Box, Dialog, IconButton, Toolbar } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import { TDeleteContactDialogFC } from "types";
+import { TDeleteContactDialogProps } from "types";
 import { FullScreenModalTransition } from "components/FullScreenModalTransition/FullScreenModalTransition";
 
-export const DeleteContactDialog: TDeleteContactDialogFC = ({
-  contact,
-  open,
-  onClose,
-  onDelete,
-  onCancel,
-}) => {
+export const DeleteContactDialog = React.forwardRef<
+  unknown,
+  TDeleteContactDialogProps
+>(({ contact, open, onClose, onDelete, onCancel }, ref) => {
   const handleDelete: (
     idToDelete: string
   ) => React.MouseEventHandler<HTMLButtonElement> = React.useCallback(

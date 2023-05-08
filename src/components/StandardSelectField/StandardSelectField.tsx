@@ -26,11 +26,11 @@ export const StandardSelectField: TStandardSelectFieldFC = ({
       </InputLabel>
       <Select<string>
         labelId={id}
-        value={selectedOption}
         onChange={handleChange}
         label={label}
         required
         name={name}
+        defaultValue={selectedOption}
       >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>

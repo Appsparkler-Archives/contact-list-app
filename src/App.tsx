@@ -1,29 +1,22 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { CreateContactForm } from "components/CreateContactForm/CreateContactForm";
-import { IContactFormData } from "types";
-import { TAppFC } from "data/app";
-import { useMemo } from "react";
+import { IContactFormData, TAppFC, TContactFormFCProps } from "types";
+import { useCallback, useState } from "react";
 import { FiltersChip } from "components/FilterChip/FiltersChip";
 import { ContactListAccordion } from "components/ContactListAccordion/ContactListAccordion";
 import { PersonAddAlt1 as PersonAddAlt1Icon } from "@mui/icons-material";
 import { ContactForm } from "components/ContactForm/ContactForm";
+import { uniqueId } from "lodash";
 
 export const App: TAppFC = ({ contacts }) => {
-  const createContact: IContactFormData = {
-    id: "",
-    gender: "female",
-    mobile: "",
-    name: "",
-    type: "personal",
-    address: "",
-    company: "",
-    email: "",
-  };
-
-  const showContacts: boolean = useMemo(
-    () => contacts.length > 0,
-    [contacts.length]
+  const [createContact, setCreateContact] = useState<IContactFormData>(
+    getDefaultCreateContact()
   );
+
+  const handleCreateFormCancel: TContactFormFCProps["onCancel"] =
+    useCallback(() => {
+      alert("cancelling...");
+      setCreateContact(getDefaultCreateContact());
+    }, []);
 
   return (
     <Box
@@ -40,6 +33,8 @@ export const App: TAppFC = ({ contacts }) => {
         sx={{ backgroundColor: "background.paper" }}
       />
       {contacts.length > 0 && <FiltersChip contacts={contacts} />}
+
+      {/* Create Contact Form */}
       <Box display={"flex"}>
         <ContactForm
           contact={createContact}
@@ -47,9 +42,7 @@ export const App: TAppFC = ({ contacts }) => {
             throw new Error("Function not implemented.");
           }}
           formType={"Create"}
-          onCancel={function (): void {
-            throw new Error("Function not implemented.");
-          }}
+          onCancel={handleCreateFormCancel}
           TriggerButton={({ onClick }) => (
             <Button onClick={onClick} startIcon={<PersonAddAlt1Icon />}>
               Add New Contact
@@ -92,3 +85,17 @@ export const App: TAppFC = ({ contacts }) => {
 };
 
 export default App;
+function getDefaultCreateContact():
+  | IContactFormData
+  | (() => IContactFormData) {
+  return {
+    id: uniqueId("contact"),
+    gender: "female",
+    mobile: "",
+    name: "",
+    type: "personal",
+    address: "",
+    company: "",
+    email: "",
+  };
+}

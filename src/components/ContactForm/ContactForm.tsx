@@ -4,13 +4,11 @@ import {
   Button,
   Dialog,
   IconButton,
-  Slide,
   TextField,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useCallback, useMemo, useState } from "react";
-import { TransitionProps } from "@mui/material/transitions";
+import React, { useCallback, useMemo } from "react";
 import {
   IContactFormData,
   IStandardSelectFieldChangeHandler,
@@ -21,13 +19,12 @@ import { Close as CloseIcon } from "@mui/icons-material";
 import { FullScreenModalTransition } from "components/FullScreenModalTransition/FullScreenModalTransition";
 
 export const ContactForm: TContactFormFC = ({
-  contact,
+  contact: contactData,
   formType,
   TriggerButton,
   onSubmit,
   onCancel,
 }) => {
-  const [contactData, setContactData] = useState<IContactFormData>(contact);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -57,18 +54,18 @@ export const ContactForm: TContactFormFC = ({
   const handleChangeTextField = useCallback<
     React.ChangeEventHandler<HTMLInputElement>
   >(({ target: { name, value } }) => {
-    setContactData((oldContactData) => ({
-      ...oldContactData,
-      [name]: value,
-    }));
+    // setContactData((oldContactData) => ({
+    //   ...oldContactData,
+    //   [name]: value,
+    // }));
   }, []);
 
   const handleChangeSelectField =
     useCallback<IStandardSelectFieldChangeHandler>((name, value) => {
-      setContactData((oldContactData) => ({
-        ...oldContactData,
-        [name]: value,
-      }));
+      // setContactData((oldContactData) => ({
+      //   ...oldContactData,
+      //   [name]: value,
+      // }));
     }, []);
 
   const colorType: "primary" | "secondary" = useMemo(
@@ -82,7 +79,7 @@ export const ContactForm: TContactFormFC = ({
       <Dialog
         fullScreen
         open={open}
-        onClose={handleClose}
+        onClose={handleCancel}
         TransitionComponent={FullScreenModalTransition}
       >
         <form onSubmit={handleSubmit}>
@@ -111,7 +108,7 @@ export const ContactForm: TContactFormFC = ({
               label="Name"
               variant="standard"
               name="name"
-              value={contactData.name}
+              defaultValue={contactData.name}
               onChange={handleChangeTextField}
               required
             />
@@ -120,8 +117,9 @@ export const ContactForm: TContactFormFC = ({
               label="Mobile"
               variant="standard"
               name="mobile"
-              value={contactData.mobile}
+              // value={contactData.mobile}
               onChange={handleChangeTextField}
+              defaultValue={contactData.mobile}
               required
             />
             <TextField

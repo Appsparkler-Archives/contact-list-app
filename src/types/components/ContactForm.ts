@@ -1,6 +1,6 @@
 import { IContactFormData } from "types";
 
-export type TContactFormFC = React.FC<{
+export interface TContactFormFCProps {
   onSubmit: (contact: IContactFormData) => void;
   formType: "Create" | "Edit";
   onCancel: () => void;
@@ -9,4 +9,6 @@ export type TContactFormFC = React.FC<{
     onClick: React.MouseEventHandler<HTMLButtonElement>;
   }>;
   contact: IContactFormData;
-}>;
+}
+
+export type TContactFormFC = React.FC<TContactFormFCProps>;

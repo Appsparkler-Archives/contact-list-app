@@ -11,6 +11,7 @@ import {
 } from "@mui/icons-material";
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { TContactListAccordionFC } from "types";
+import { DeleteContact } from "components/DeleteContact/DeleteContact";
 
 export const ContactListAccordion: TContactListAccordionFC = ({
   contacts,
@@ -18,14 +19,6 @@ export const ContactListAccordion: TContactListAccordionFC = ({
   onEdit,
   onView,
 }) => {
-  const handleDelete: (
-    idToDelete: string
-  ) => React.MouseEventHandler<HTMLButtonElement> = React.useCallback(
-    (idToDelete) => () => {
-      onDelete(idToDelete);
-    },
-    [onDelete]
-  );
   return (
     <div>
       {contacts.map((contact) => (
@@ -64,13 +57,7 @@ export const ContactListAccordion: TContactListAccordionFC = ({
                 )}
                 contact={contact}
               />
-              <IconButton
-                aria-label="delete"
-                color="error"
-                onClick={handleDelete(contact.id)}
-              >
-                <DeleteIcon />
-              </IconButton>
+              <DeleteContact contact={contact} onDelete={onDelete} />
             </Box>
           </AccordionDetails>
         </Accordion>

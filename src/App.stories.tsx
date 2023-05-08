@@ -23,3 +23,7 @@ export const withContacts: Story = {
     contacts: contactsData.variant1,
   },
 };
+
+export const exampleApp = () => {
+  return <App contacts={[]} />;
+};

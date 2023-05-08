@@ -18,15 +18,7 @@ import {
 } from "types";
 import { StandardSelectField } from "components/StandardSelectField/StandardSelectField";
 import { Close as CloseIcon } from "@mui/icons-material";
-
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+import { FullScreenModalTransition } from "components/FullScreenModalTransition/FullScreenModalTransition";
 
 export const ContactForm: TContactFormFC = ({
   contact,
@@ -91,7 +83,7 @@ export const ContactForm: TContactFormFC = ({
         fullScreen
         open={open}
         onClose={handleClose}
-        TransitionComponent={Transition}
+        TransitionComponent={FullScreenModalTransition}
       >
         <form onSubmit={handleSubmit}>
           <AppBar color={colorType} sx={{ position: "relative" }}>

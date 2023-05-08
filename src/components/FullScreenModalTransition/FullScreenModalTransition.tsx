@@ -1,12 +1,10 @@
 import { Slide } from "@mui/material";
-import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
+import { FullScreenModalTransitionProps } from "types";
 
-export const FullScreenModalTransition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>
-) {
+export const FullScreenModalTransition = React.forwardRef<
+  unknown,
+  FullScreenModalTransitionProps
+>(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });

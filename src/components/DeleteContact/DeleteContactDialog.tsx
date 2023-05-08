@@ -25,7 +25,7 @@ export const DeleteContactDialog = React.forwardRef<
       fullScreen
       TransitionComponent={FullScreenModalTransition}
     >
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "warning.main" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -54,14 +54,14 @@ export const DeleteContactDialog = React.forwardRef<
         <Button
           size="large"
           variant="outlined"
-          color="primary"
+          color="warning"
           onClick={onCancel}
         >
           Cancel
         </Button>
         <Button
           size="large"
-          color="error"
+          color="warning"
           variant="contained"
           onClick={handleDelete(contact.id)}
         >
@@ -70,4 +70,4 @@ export const DeleteContactDialog = React.forwardRef<
       </Box>
     </Dialog>
   );
-};
+});

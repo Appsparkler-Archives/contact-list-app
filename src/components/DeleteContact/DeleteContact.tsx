@@ -2,7 +2,7 @@ import * as React from "react";
 import Modal from "@mui/material/Modal";
 import { IconButton } from "@mui/material";
 import { DeleteContactDialog } from "./DeleteContactDialog";
-import { TDeleteContactModalFC } from "types";
+import { TDeleteContactDialogProps, TDeleteContactModalFC } from "types";
 import { Delete as DeleteIcon } from "@mui/icons-material";
 
 export const DeleteContact: TDeleteContactModalFC = ({ contact, onDelete }) => {
@@ -12,9 +12,17 @@ export const DeleteContact: TDeleteContactModalFC = ({ contact, onDelete }) => {
 
   const handleClose = () => setOpen(false);
 
+  const handleDelete = React.useCallback<TDeleteContactDialogProps["onDelete"]>(
+    (contactIdToDelete) => {
+      handleClose();
+      onDelete(contactIdToDelete);
+    },
+    [onDelete]
+  );
+
   return (
     <div>
-      <IconButton aria-label="delete" color="error" onClick={handleOpen}>
+      <IconButton aria-label="delete" color="warning" onClick={handleOpen}>
         <DeleteIcon />
       </IconButton>
       <Modal
@@ -27,7 +35,7 @@ export const DeleteContact: TDeleteContactModalFC = ({ contact, onDelete }) => {
           open={open}
           contact={contact}
           onClose={handleClose}
-          onDelete={onDelete}
+          onDelete={handleDelete}
           onCancel={handleClose}
         />
       </Modal>

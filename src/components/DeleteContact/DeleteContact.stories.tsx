@@ -12,7 +12,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const deleteContact: Story = {
+export const deleteContactModal: Story = {
   args: {
     contact: contactsData.variant1[0],
   },

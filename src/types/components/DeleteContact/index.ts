@@ -1,1 +1,1 @@
-export * from "./DeleteContactDialog";
+export * from "./DeleteContact";

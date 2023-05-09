@@ -15,10 +15,14 @@ const TriggerButton: TContactFormFCProps["TriggerButton"] = ({ onClick }) => (
   </Button>
 );
 
-export const CreateContactForm: TCreateContactFormFC = () => {
+export const CreateContactForm: TCreateContactFormFC = ({ onCreate }) => {
   const contact = useMemo(() => getDefaultCreateContact(), []);
-  const handleSubmit: TContactFormFCProps["onSubmit"] =
-    useCallback(() => {}, []);
+  const handleSubmit: TContactFormFCProps["onSubmit"] = useCallback(
+    (createdContact) => {
+      onCreate(createdContact);
+    },
+    [onCreate]
+  );
   const handleCancel: TContactFormFCProps["onCancel"] =
     useCallback(() => {}, []);
 

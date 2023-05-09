@@ -9,17 +9,13 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
-import {
-  IContactFormData,
-  IStandardSelectFieldChangeHandler,
-  TContactFormFC,
-} from "types";
+import { TContactFormFC } from "types";
 import { StandardSelectField } from "components/StandardSelectField/StandardSelectField";
 import { Close as CloseIcon } from "@mui/icons-material";
 import { FullScreenModalTransition } from "components/FullScreenModalTransition/FullScreenModalTransition";
 
 export const ContactForm: TContactFormFC = ({
-  contact: contactData,
+  contact,
   formType,
   TriggerButton,
   onSubmit,
@@ -38,10 +34,14 @@ export const ContactForm: TContactFormFC = ({
   const handleSubmit = useCallback<React.FormEventHandler<HTMLFormElement>>(
     (event) => {
       event.preventDefault();
-      onSubmit(contactData);
-      handleClose();
+      const formData = new FormData(event.currentTarget);
+      const formObject = Object.fromEntries(formData.entries());
+      onSubmit({
+        ...contact,
+        ...formObject,
+      });
     },
-    [contactData, handleClose, onSubmit]
+    [contact, onSubmit]
   );
 
   const handleCancel = useCallback<
@@ -50,23 +50,6 @@ export const ContactForm: TContactFormFC = ({
     handleClose();
     onCancel();
   }, [handleClose, onCancel]);
-
-  const handleChangeTextField = useCallback<
-    React.ChangeEventHandler<HTMLInputElement>
-  >(({ target: { name, value } }) => {
-    // setContactData((oldContactData) => ({
-    //   ...oldContactData,
-    //   [name]: value,
-    // }));
-  }, []);
-
-  const handleChangeSelectField =
-    useCallback<IStandardSelectFieldChangeHandler>((name, value) => {
-      // setContactData((oldContactData) => ({
-      //   ...oldContactData,
-      //   [name]: value,
-      // }));
-    }, []);
 
   const colorType: "primary" | "secondary" = useMemo(
     () => (formType === "Create" ? "primary" : "secondary"),
@@ -108,8 +91,7 @@ export const ContactForm: TContactFormFC = ({
               label="Name"
               variant="standard"
               name="name"
-              defaultValue={contactData.name}
-              onChange={handleChangeTextField}
+              defaultValue={contact.name}
               required
             />
             <TextField
@@ -117,25 +99,21 @@ export const ContactForm: TContactFormFC = ({
               label="Mobile"
               variant="standard"
               name="mobile"
-              // value={contactData.mobile}
-              onChange={handleChangeTextField}
-              defaultValue={contactData.mobile}
+              defaultValue={contact.mobile}
               required
             />
             <TextField
               fullWidth
               label="Email"
               variant="standard"
-              value={contactData.email}
-              onChange={handleChangeTextField}
+              defaultValue={contact.email}
               name="email"
             />
             <TextField
               fullWidth
               label="Address"
               variant="standard"
-              value={contactData.address}
-              onChange={handleChangeTextField}
+              defaultValue={contact.address}
               name="address"
             />
             <StandardSelectField
@@ -145,8 +123,7 @@ export const ContactForm: TContactFormFC = ({
               ]}
               id="contact-field--gender"
               label="Gender"
-              onChange={handleChangeSelectField}
-              selectedOption={contactData.gender}
+              selectedOption={contact.gender}
               name="gender"
             />
             <StandardSelectField
@@ -156,17 +133,15 @@ export const ContactForm: TContactFormFC = ({
               ]}
               id="contact-field--type"
               label="Type"
-              onChange={handleChangeSelectField}
-              selectedOption={contactData.type}
+              selectedOption={contact.type}
               name="type"
             />
             <TextField
               fullWidth
               label="Company"
               variant="standard"
-              value={contactData.company}
+              defaultValue={contact.company}
               name="company"
-              onChange={handleChangeTextField}
             />
             <Box
               display={"flex"}

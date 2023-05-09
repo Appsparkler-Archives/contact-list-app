@@ -13,7 +13,6 @@ export const ContactListAccordion: TContactListAccordionFC = ({
   contacts,
   onDelete,
   onEdit,
-  onView,
 }) => {
   return (
     <div>

@@ -5,3 +5,4 @@ export * from "./ContactForm";
 export * from "./DeleteContact";
 export * from "./FullScreenModalTransition";
 export * from "./ViewContactModal";
+export * from "./CreateContactForm";

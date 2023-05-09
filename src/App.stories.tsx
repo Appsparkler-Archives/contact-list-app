@@ -3,15 +3,8 @@ import { App } from "./App";
 import { contactsData } from "data";
 import { IAppProps, IContactFormData } from "types";
 import { useCallback, useState } from "react";
-import {
-  fill,
-  findIndex,
-  indexOf,
-  pipe,
-  replace,
-  set,
-  update,
-} from "lodash/fp";
+import { updateContactsWithEditedContact } from "utils";
+import { remove } from "lodash/fp";
 
 const meta = {
   title: "App",
@@ -42,14 +35,18 @@ export const Demo = () => {
     setContacts((prevContacts) => [contact, ...prevContacts]);
   }, []);
 
+  const handleDelete: IAppProps["onDelete"] = useCallback((contactToDelete) => {
+    const removeContactFromList = remove<IContactFormData>(
+      (contact) => contact.id === contactToDelete
+    );
+    setContacts((prevContacts) => removeContactFromList(prevContacts));
+  }, []);
+
   const editContact: IAppProps["onEdit"] = useCallback(
     (editedContact) => {
-      const indexOfContactToEdit = findIndex<IContactFormData>(
-        (contact) => contact.id === editedContact.id
-      )(contacts);
-      const updatedContacts = [...contacts];
-      updatedContacts[indexOfContactToEdit] = editedContact;
-      setContacts(updatedContacts);
+      const updatedContactList =
+        updateContactsWithEditedContact(editedContact)(contacts);
+      setContacts(updatedContactList);
     },
     [contacts]
   );
@@ -59,9 +56,7 @@ export const Demo = () => {
       contacts={contacts}
       onCreate={handleCreate}
       onEdit={editContact}
-      onDelete={function (contactIdToDelete: string): void {
-        throw new Error("Function not implemented.");
-      }}
+      onDelete={handleDelete}
     />
   );
 };

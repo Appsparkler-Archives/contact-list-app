@@ -1,11 +1,7 @@
 import { contactsData } from "data";
-import { find, map } from "lodash/fp";
+import { find } from "lodash/fp";
 import { IContactFormData } from "types";
-
-const updateContactsWithEditedContact = (contact2Edit: IContactFormData) =>
-  map<IContactFormData, IContactFormData>((contact) =>
-    contact2Edit.id === contact.id ? contact2Edit : contact
-  );
+import { updateContactsWithEditedContact } from "./updateContactsWithEditedContact";
 
 describe("updateContactsWithEditedContact", () => {
   const contacts = [...contactsData.variant1];

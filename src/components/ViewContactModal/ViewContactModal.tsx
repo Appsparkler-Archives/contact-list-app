@@ -19,6 +19,7 @@ import {
   PhoneAndroid as PhoneAndroidIcon,
 } from "@mui/icons-material";
 import { TContactInfoItem, TViewContactModalFC } from "types";
+import { blue, pink } from "@mui/material/colors";
 
 export const ViewContactModal: TViewContactModalFC = ({ contact }) => {
   const [open, setOpen] = React.useState(false);
@@ -32,7 +33,7 @@ export const ViewContactModal: TViewContactModalFC = ({ contact }) => {
   };
 
   return (
-    <div>
+    <Box>
       <IconButton aria-label="read" color="primary" onClick={handleClickOpen}>
         <ChromeReaderModeIcon />
       </IconButton>
@@ -61,8 +62,14 @@ export const ViewContactModal: TViewContactModalFC = ({ contact }) => {
           </Toolbar>
         </AppBar>
         <Box p={2} display={"flex"} flexDirection={"column"} gap={2}>
-          <Avatar>
-            {contact.gender === "male" ? <MaleIcon /> : <FemaleIcon />}
+          <Avatar
+            sx={{ bgcolor: contact.gender === "male" ? blue[500] : pink[500] }}
+          >
+            {contact.gender === "male" ? (
+              <MaleIcon fontSize={"large"} />
+            ) : (
+              <FemaleIcon fontSize={"large"} />
+            )}
           </Avatar>
           <Typography variant="h5"> {contact.name}</Typography>
           <InfoItem icon={<PhoneAndroidIcon />} info={contact.mobile} />
@@ -72,7 +79,7 @@ export const ViewContactModal: TViewContactModalFC = ({ contact }) => {
           <InfoItem icon={<CategoryIcon />} info={contact.type} />
         </Box>
       </Dialog>
-    </div>
+    </Box>
   );
 };
 

@@ -1,9 +1,11 @@
-import * as React from "react";
-import Modal from "@mui/material/Modal";
-import { IconButton } from "@mui/material";
-import { DeleteContactDialog } from "./DeleteContactDialog";
-import { TDeleteContactDialogProps, TDeleteContactModalFC } from "types";
+import { TDeleteContactModalFC } from "types";
 import { Delete as DeleteIcon } from "@mui/icons-material";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { AppBar, Box, Dialog, IconButton, Toolbar } from "@mui/material";
+import { Close } from "@mui/icons-material";
+import { FullScreenModalTransition } from "components/FullScreenModalTransition/FullScreenModalTransition";
 
 export const DeleteContact: TDeleteContactModalFC = ({ contact, onDelete }) => {
   const [open, setOpen] = React.useState(false);
@@ -12,33 +14,69 @@ export const DeleteContact: TDeleteContactModalFC = ({ contact, onDelete }) => {
 
   const handleClose = () => setOpen(false);
 
-  const handleDelete = React.useCallback<TDeleteContactDialogProps["onDelete"]>(
-    (contactIdToDelete) => {
+  const handleDelete: React.MouseEventHandler<HTMLButtonElement> =
+    React.useCallback(() => {
       handleClose();
-      onDelete(contactIdToDelete);
-    },
-    [onDelete]
-  );
+      setTimeout(() => {
+        onDelete(contact.id);
+      }, 500);
+    }, [contact, onDelete]);
 
   return (
-    <div>
+    <Box>
       <IconButton aria-label="delete" color="warning" onClick={handleOpen}>
         <DeleteIcon />
       </IconButton>
-      <Modal
+      <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        fullScreen
+        TransitionComponent={FullScreenModalTransition}
       >
-        <DeleteContactDialog
-          open={open}
-          contact={contact}
-          onClose={handleClose}
-          onDelete={handleDelete}
-          onCancel={handleClose}
-        />
-      </Modal>
-    </div>
+        <AppBar position="static" sx={{ backgroundColor: "warning.main" }}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <Close />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Delete Contact
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Typography p={2} gutterBottom variant="body1" component="div">
+          Are you sure you want to delete <strong>{contact.name}</strong> from
+          your contact list?
+        </Typography>
+        <Box
+          display="flex"
+          flexDirection={"row"}
+          justifyContent={"flex-end"}
+          p={2}
+          gap={2}
+        >
+          <Button
+            size="large"
+            variant="outlined"
+            color="warning"
+            onClick={handleClose}
+          >
+            Cancel
+          </Button>
+          <Button
+            size="large"
+            color="warning"
+            variant="contained"
+            onClick={handleDelete}
+          >
+            Yes, delete
+          </Button>
+        </Box>
+      </Dialog>
+    </Box>
   );
 };

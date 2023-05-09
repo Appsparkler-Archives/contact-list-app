@@ -6,5 +6,5 @@ export const FullScreenModalTransition = React.forwardRef<
   unknown,
   FullScreenModalTransitionProps
 >(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide timeout={500} direction="up" ref={ref} {...props} />;
 });

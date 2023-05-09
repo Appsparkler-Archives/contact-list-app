@@ -21,5 +21,4 @@ export type TStandardSelectFieldFC = React.FC<{
   name: string;
   selectedOption: string;
   label: string;
-  onChange: IStandardSelectFieldChangeHandler;
 }>;

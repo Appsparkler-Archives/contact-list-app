@@ -3,16 +3,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import { Box, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  ChromeReaderMode as ChromeReaderModeIcon,
-  Edit as EditIcon,
-} from "@mui/icons-material";
-import { ContactForm } from "components/ContactForm/ContactForm";
+import { Box } from "@mui/material";
 import { TContactListAccordionFC } from "types";
 import { DeleteContact } from "components/DeleteContact/DeleteContact";
 import { ViewContactModal } from "components/ViewContactModal/ViewContactModal";
+import { EditContactForm } from "components/EditContactForm/EditContactForm";
 
 export const ContactListAccordion: TContactListAccordionFC = ({
   contacts,
@@ -39,23 +34,7 @@ export const ContactListAccordion: TContactListAccordionFC = ({
               justifyContent={"space-between"}
             >
               <ViewContactModal contact={contact} />
-              <ContactForm
-                onSubmit={onEdit}
-                formType={"Edit"}
-                onCancel={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
-                TriggerButton={({ onClick }) => (
-                  <IconButton
-                    aria-label="edit"
-                    onClick={onClick}
-                    color="secondary"
-                  >
-                    <EditIcon />
-                  </IconButton>
-                )}
-                contact={contact}
-              />
+              <EditContactForm onEdit={onEdit} contactToEdit={contact} />
               <DeleteContact contact={contact} onDelete={onDelete} />
             </Box>
           </AccordionDetails>

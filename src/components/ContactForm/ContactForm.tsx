@@ -40,8 +40,9 @@ export const ContactForm: TContactFormFC = ({
         ...contact,
         ...formObject,
       });
+      handleClose();
     },
-    [contact, onSubmit]
+    [contact, handleClose, onSubmit]
   );
 
   const handleCancel = useCallback<
@@ -87,6 +88,7 @@ export const ContactForm: TContactFormFC = ({
           {/* Create Contact Form Fields */}
           <Box gap={2} p={2} flexDirection={"column"} display={"flex"}>
             <TextField
+              autoFocus
               fullWidth
               label="Name"
               variant="standard"

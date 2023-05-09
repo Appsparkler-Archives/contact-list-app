@@ -21,14 +21,10 @@ export const CreateContactForm: TCreateContactFormFC = ({ onCreate }) => {
     [onCreate]
   );
 
-  const handleCancel: TContactFormFCProps["onCancel"] =
-    useCallback(() => {}, []);
-
   return (
     <ContactForm
       formType={"Create"}
       onSubmit={handleSubmit}
-      onCancel={handleCancel}
       TriggerButton={TriggerButton}
       contact={contact}
     />

@@ -48,7 +48,7 @@ export const ContactForm: TContactFormFC = ({
     React.MouseEventHandler<HTMLButtonElement>
   >(() => {
     handleClose();
-    onCancel();
+    onCancel && onCancel();
   }, [handleClose, onCancel]);
 
   const colorType: "primary" | "secondary" = useMemo(

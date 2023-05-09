@@ -5,6 +5,10 @@ import { IAppProps, IContactFormData } from "types";
 import { useCallback, useState } from "react";
 import { updateContactsWithEditedContact } from "utils";
 import { remove } from "lodash/fp";
+import { Provider } from "react-redux";
+import { store } from "app/store";
+import { contactsActions } from "features/contacts/contactsSlice";
+import { useAppDispatch, useAppSelector } from "app/hooks";
 
 const meta = {
   title: "App",
@@ -56,6 +60,50 @@ export const Demo = () => {
       contacts={contacts}
       onCreate={handleCreate}
       onEdit={editContact}
+      onDelete={handleDelete}
+    />
+  );
+};
+
+export const ReduxDemo = () => {
+  return (
+    <Provider store={store}>
+      <ConnectedApp />
+    </Provider>
+  );
+};
+
+const ConnectedApp = () => {
+  const contacts = useAppSelector((state) => state.contacts);
+
+  const dispatch = useAppDispatch();
+
+  const handleCreate: IAppProps["onCreate"] = useCallback(
+    (contacts) => {
+      dispatch(contactsActions.create(contacts));
+    },
+    [dispatch]
+  );
+
+  const handleEdit: IAppProps["onEdit"] = useCallback(
+    (contact2Edit) => {
+      dispatch(contactsActions.edit(contact2Edit));
+    },
+    [dispatch]
+  );
+
+  const handleDelete: IAppProps["onDelete"] = useCallback(
+    (contactIdToDelete) => {
+      dispatch(contactsActions.delete(contactIdToDelete));
+    },
+    [dispatch]
+  );
+
+  return (
+    <App
+      contacts={contacts}
+      onCreate={handleCreate}
+      onEdit={handleEdit}
       onDelete={handleDelete}
     />
   );

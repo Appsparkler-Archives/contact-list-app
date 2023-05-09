@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { TAppFC } from "types";
 import { FiltersChip } from "components/FilterChip/FiltersChip";
 import { ContactListAccordion } from "components/ContactListAccordion/ContactListAccordion";
@@ -15,10 +15,6 @@ export const App: TAppFC = ({ contacts, onCreate, onEdit, onDelete }) => {
       gap={2}
     >
       <Typography variant="h4">Contacts</Typography>
-      <TextField
-        placeholder="Search..."
-        sx={{ backgroundColor: "background.paper" }}
-      />
       {contacts.length > 0 && <FiltersChip contacts={contacts} />}
       <Box>
         <CreateContactForm onCreate={onCreate} />

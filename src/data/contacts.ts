@@ -1,3 +1,4 @@
+import { uniqueId } from "lodash/fp";
 import { IContactFormData } from "types";
 
 export const contactsData: Record<string, IContactFormData[]> = {
@@ -33,3 +34,14 @@ export const contactsData: Record<string, IContactFormData[]> = {
     },
   ],
 };
+
+export const getDefaultCreateContact = (): IContactFormData => ({
+  id: uniqueId("contact"),
+  gender: "female",
+  mobile: "",
+  name: "",
+  type: "personal",
+  address: "",
+  company: "",
+  email: "",
+});

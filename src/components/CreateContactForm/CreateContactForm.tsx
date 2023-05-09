@@ -1,13 +1,9 @@
 import { PersonAddAlt1 as PersonAddAlt1Icon } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { ContactForm } from "components/ContactForm/ContactForm";
-import { uniqueId } from "lodash/fp";
 import { useCallback, useMemo } from "react";
-import {
-  IContactFormData,
-  TContactFormFCProps,
-  TCreateContactFormFC,
-} from "types";
+import { getDefaultCreateContact } from "data";
+import { TContactFormFCProps, TCreateContactFormFC } from "types";
 
 const TriggerButton: TContactFormFCProps["TriggerButton"] = ({ onClick }) => (
   <Button onClick={onClick} startIcon={<PersonAddAlt1Icon />}>
@@ -17,12 +13,14 @@ const TriggerButton: TContactFormFCProps["TriggerButton"] = ({ onClick }) => (
 
 export const CreateContactForm: TCreateContactFormFC = ({ onCreate }) => {
   const contact = useMemo(() => getDefaultCreateContact(), []);
+
   const handleSubmit: TContactFormFCProps["onSubmit"] = useCallback(
     (createdContact) => {
       onCreate(createdContact);
     },
     [onCreate]
   );
+
   const handleCancel: TContactFormFCProps["onCancel"] =
     useCallback(() => {}, []);
 
@@ -36,14 +34,3 @@ export const CreateContactForm: TCreateContactFormFC = ({ onCreate }) => {
     />
   );
 };
-
-const getDefaultCreateContact = (): IContactFormData => ({
-  id: uniqueId("contact"),
-  gender: "female",
-  mobile: "",
-  name: "",
-  type: "personal",
-  address: "",
-  company: "",
-  email: "",
-});

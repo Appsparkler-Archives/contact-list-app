@@ -14,9 +14,6 @@ describe("ContactListAccordion Snapshot Tests", () => {
         onDelete={function (deletedContactId: string): void {
           throw new Error("Function not implemented.");
         }}
-        onView={function (): void {
-          throw new Error("Function not implemented.");
-        }}
       />
     );
     expect(container).toMatchSnapshot();

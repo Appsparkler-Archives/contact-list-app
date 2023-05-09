@@ -17,7 +17,7 @@ export const ContactListAccordion: TContactListAccordionFC = ({
   return (
     <div>
       {contacts.map((contact) => (
-        <Accordion>
+        <Accordion key={contact.id}>
           <AccordionSummary aria-controls={contact.id} id={contact.id}>
             <Box display={"flex"} flexDirection={"column"}>
               <Typography variant="h6">{contact.name}</Typography>

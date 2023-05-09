@@ -1,7 +1,7 @@
 import { uniqueId } from "lodash/fp";
 import { IContactFormData } from "types";
 
-export const contactsData: Record<string, IContactFormData[]> = {
+export const contactsData: Record<"variant1", IContactFormData[]> = {
   variant1: [
     {
       id: "7cb1248c-983a-4207-a59f-40bfa1fae564",

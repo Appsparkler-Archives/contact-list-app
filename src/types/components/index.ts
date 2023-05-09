@@ -6,3 +6,4 @@ export * from "./DeleteContact";
 export * from "./FullScreenModalTransition";
 export * from "./ViewContactModal";
 export * from "./CreateContactForm";
+export * from "./EditContactForm";

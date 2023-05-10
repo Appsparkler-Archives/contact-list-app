@@ -55,7 +55,9 @@ exports[`ContactListAccordion Snapshot Tests snapshot 1 1`] = `
                 <div
                   class="MuiBox-root css-9jay18"
                 >
-                  <div>
+                  <div
+                    class="MuiBox-root css-0"
+                  >
                     <button
                       aria-label="read"
                       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
@@ -99,7 +101,9 @@ exports[`ContactListAccordion Snapshot Tests snapshot 1 1`] = `
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
                   </button>
-                  <div>
+                  <div
+                    class="MuiBox-root css-0"
+                  >
                     <button
                       aria-label="delete"
                       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorWarning MuiIconButton-sizeMedium css-1moznky-MuiButtonBase-root-MuiIconButton-root"
@@ -181,7 +185,9 @@ exports[`ContactListAccordion Snapshot Tests snapshot 1 1`] = `
                 <div
                   class="MuiBox-root css-9jay18"
                 >
-                  <div>
+                  <div
+                    class="MuiBox-root css-0"
+                  >
                     <button
                       aria-label="read"
                       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
@@ -225,7 +231,9 @@ exports[`ContactListAccordion Snapshot Tests snapshot 1 1`] = `
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
                   </button>
-                  <div>
+                  <div
+                    class="MuiBox-root css-0"
+                  >
                     <button
                       aria-label="delete"
                       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorWarning MuiIconButton-sizeMedium css-1moznky-MuiButtonBase-root-MuiIconButton-root"
@@ -305,7 +313,9 @@ exports[`ContactListAccordion Snapshot Tests snapshot 1 1`] = `
                 <div
                   class="MuiBox-root css-9jay18"
                 >
-                  <div>
+                  <div
+                    class="MuiBox-root css-0"
+                  >
                     <button
                       aria-label="read"
                       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
@@ -349,7 +359,9 @@ exports[`ContactListAccordion Snapshot Tests snapshot 1 1`] = `
                       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                     />
                   </button>
-                  <div>
+                  <div
+                    class="MuiBox-root css-0"
+                  >
                     <button
                       aria-label="delete"
                       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorWarning MuiIconButton-sizeMedium css-1moznky-MuiButtonBase-root-MuiIconButton-root"

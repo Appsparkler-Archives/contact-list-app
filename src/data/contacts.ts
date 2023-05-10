@@ -12,6 +12,7 @@ export const contactsData: Record<"variant1", IContactFormData[]> = {
       imgUrl:
         "https://plus.unsplash.com/premium_photo-1671641797679-3b680a7d2109?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60",
       company: "SurveyHeart",
+      address: "UK",
     },
     {
       id: "b4fc7a3e-3522-4292-b05d-5edbdffcf3ac",

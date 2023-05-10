@@ -81,11 +81,13 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/src/App.stories.tsx",
-      "<rootDir>/src/components/ContactForm/ContactForm.stories.tsx",
       "<rootDir>/src/components/ViewContactModal/ViewContactModal.stories.tsx",
       "<rootDir>/src/components/StandardSelectField/StandardSelectField.stories.tsx",
       "<rootDir>/src/components/EditContactForm/EditContactForm.stories.tsx",
-      "DeleteContactDialog.stories.tsx"
+      "<rootDir>/src/components/DeleteContact/DeleteContact.stories.tsx",
+      "<rootDir>/src/components/CreateContactForm/CreateContact.stories.tsx",
+      "<rootDir>/src/components/ContactListAccordion/ContactListAccordion.stories.tsx",
+      "<rootDir>/src/components/ContactForm/ContactForm.stories.tsx"
     ]
   }
 }

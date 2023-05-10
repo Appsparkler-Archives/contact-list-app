@@ -76,5 +76,16 @@
     "react-test-renderer": "^18.2.0",
     "storybook": "^7.0.7",
     "webpack": "^5.81.0"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/App.stories.tsx",
+      "<rootDir>/src/components/ContactForm/ContactForm.stories.tsx",
+      "<rootDir>/src/components/ViewContactModal/ViewContactModal.stories.tsx",
+      "<rootDir>/src/components/StandardSelectField/StandardSelectField.stories.tsx",
+      "<rootDir>/src/components/EditContactForm/EditContactForm.stories.tsx",
+      "DeleteContactDialog.stories.tsx"
+    ]
   }
 }

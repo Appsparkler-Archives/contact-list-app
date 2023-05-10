@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import "./index.css";
 import { TAppFC } from "types";
 import { FiltersChip } from "components/FilterChip/FiltersChip";
 import { ContactListAccordion } from "components/ContactListAccordion/ContactListAccordion";
@@ -10,11 +11,13 @@ export const App: TAppFC = ({ contacts, onCreate, onEdit, onDelete }) => {
       display={"flex"}
       flexDirection={"column"}
       p={2}
-      height={"100vh"}
-      sx={{ backgroundColor: "grey.50", position: "relative" }}
+      sx={{ backgroundColor: "grey.50" }}
       gap={2}
     >
       <Typography variant="h4">Contacts</Typography>
+      <Typography variant="subtitle2">
+        You have {contacts.length} contacts.
+      </Typography>
       {contacts.length > 0 && <FiltersChip contacts={contacts} />}
       <Box>
         <CreateContactForm onCreate={onCreate} />

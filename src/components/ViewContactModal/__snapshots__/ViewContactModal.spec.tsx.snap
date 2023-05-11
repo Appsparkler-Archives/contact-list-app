@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViewContactModal renders correctly when closed 1`] = `
+exports[`ViewContactModal - Snapshot Tests renders correctly when closed 1`] = `
 <div>
   <div
     class="MuiBox-root css-0"
@@ -30,7 +30,7 @@ exports[`ViewContactModal renders correctly when closed 1`] = `
 </div>
 `;
 
-exports[`ViewContactModal renders correctly when open 1`] = `
+exports[`ViewContactModal - Snapshot Tests renders correctly when open 1`] = `
 <body
   style="padding-right: 1024px; overflow: hidden;"
 >
@@ -145,6 +145,7 @@ exports[`ViewContactModal renders correctly when open 1`] = `
           class="MuiBox-root css-plbgj3"
         >
           <div
+            aria-label="gender male"
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4vb5ob-MuiAvatar-root"
           >
             <svg
@@ -183,6 +184,26 @@ exports[`ViewContactModal renders correctly when open 1`] = `
               class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
             >
               +9282822223
+            </h6>
+          </div>
+          <div
+            class="MuiBox-root css-149sczi"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="EmailIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+            >
+              ali.connors@whatsapp.com
             </h6>
           </div>
           <div

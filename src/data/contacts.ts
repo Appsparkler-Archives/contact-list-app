@@ -8,6 +8,7 @@ export const contactsData: Record<"variant1", IContactFormData[]> = {
       name: "Ali Connors",
       gender: "male",
       mobile: "+9282822223",
+      email: "ali.connors@whatsapp.com",
       type: "business",
       imgUrl:
         "https://plus.unsplash.com/premium_photo-1671641797679-3b680a7d2109?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60",

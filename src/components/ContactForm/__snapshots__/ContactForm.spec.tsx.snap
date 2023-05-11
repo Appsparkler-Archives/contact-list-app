@@ -161,8 +161,8 @@ exports[`ContactForm - Snapshot Tests renders correctly when modal is opened 1`]
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
-                data-shrink="false"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard css-1c2i806-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="true"
                 for=":r4:"
                 id=":r4:-label"
               >
@@ -177,7 +177,7 @@ exports[`ContactForm - Snapshot Tests renders correctly when modal is opened 1`]
                   id=":r4:"
                   name="email"
                   type="text"
-                  value=""
+                  value="ali.connors@whatsapp.com"
                 />
               </div>
             </div>

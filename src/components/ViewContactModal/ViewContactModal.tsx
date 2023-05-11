@@ -64,6 +64,7 @@ export const ViewContactModal: TViewContactModalFC = ({ contact }) => {
         <Box p={2} display={"flex"} flexDirection={"column"} gap={2}>
           <Avatar
             sx={{ bgcolor: contact.gender === "male" ? blue[500] : pink[500] }}
+            aria-label={`gender ${contact.gender}`}
           >
             {contact.gender === "male" ? (
               <MaleIcon fontSize={"large"} />

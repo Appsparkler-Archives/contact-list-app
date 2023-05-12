@@ -80,6 +80,7 @@
     "webpack": "^5.81.0"
   },
   "jest": {
+    "resetMocks": false,
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/src/App.stories.tsx",

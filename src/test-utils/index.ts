@@ -5,3 +5,7 @@ export function changeTextField(label: RegExp, value: string) {
     target: { value },
   });
 }
+
+export function clickOnFirstCreateButton() {
+  fireEvent.click(screen.getAllByRole("button", { name: /Create/i })[0]);
+}

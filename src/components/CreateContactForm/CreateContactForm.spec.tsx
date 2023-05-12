@@ -8,7 +8,7 @@ import {
 import { CreateContactForm } from "./CreateContactForm";
 import { IContactFormData } from "types";
 import { getDefaultCreateContact } from "data";
-import { changeTextField } from "test-utils";
+import { changeTextField, clickOnFirstCreateButton } from "test-utils";
 
 jest.useFakeTimers();
 
@@ -86,13 +86,12 @@ describe("ContactForm - Functional Tests", () => {
 function clickOnTriggerButton() {
   fireEvent.click(screen.getByRole("button"));
 }
+
 function clickOnCloseButton() {
   const closeButton = screen.getByRole("button", { name: /close/i });
   fireEvent.click(closeButton);
 }
+
 function clickOnCancelButton() {
   fireEvent.click(screen.getByRole("button", { name: /cancel/i }));
-}
-function clickOnFirstCreateButton() {
-  fireEvent.click(screen.getAllByRole("button", { name: /Create/i })[0]);
 }

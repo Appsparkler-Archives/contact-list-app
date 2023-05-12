@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import { DeleteContact } from "./DeleteContact";
 import { IContactFormData } from "types";
 import { contactsData } from "data";
+import { clickOnYesDeleteButton } from "test-utils";
 
 const contact2Delete: IContactFormData = contactsData.variant1[0];
 const handleDelete = jest.fn();
@@ -41,9 +42,4 @@ function renderDeleteContactComponent(): { container: any; baseElement: any } {
 function clickOnDeleteIconButton() {
   const deleteButton = screen.getByLabelText(/delete/);
   fireEvent.click(deleteButton);
-}
-
-function clickOnYesDeleteButton() {
-  const yesDeleteButton = screen.getByText("Yes, delete");
-  fireEvent.click(yesDeleteButton);
 }

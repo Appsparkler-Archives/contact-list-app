@@ -8,6 +8,7 @@ import {
 import { CreateContactForm } from "./CreateContactForm";
 import { IContactFormData } from "types";
 import { getDefaultCreateContact } from "data";
+import { changeTextField } from "test-utils";
 
 jest.useFakeTimers();
 
@@ -81,12 +82,6 @@ describe("ContactForm - Functional Tests", () => {
     expect(onCreate).toHaveBeenCalled();
   });
 });
-
-function changeTextField(label: RegExp, value: string) {
-  fireEvent.change(screen.getByLabelText(label), {
-    target: { value },
-  });
-}
 
 function clickOnTriggerButton() {
   fireEvent.click(screen.getByRole("button"));

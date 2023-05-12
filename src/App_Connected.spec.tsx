@@ -90,6 +90,22 @@ describe("ConnectedApp - Functional Tests", () => {
 
     expect(actionsAfter[0].type).toBe("contacts/delete");
   });
+
+  it("should dispatch contacts/edit action", () => {
+    expect(store.getActions().length).toBe(0);
+    render(
+      <Provider store={store}>
+        <ConnectedApp />
+      </Provider>
+    );
+    clickOnContactAccordion();
+    clickOnFirstEditIconButton();
+    expect(screen.getByText(contactsData.variant1[0].name)).toBeTruthy();
+    changeTextField(/name/i, "ABC JKWE");
+    clickOnEditSubmitButton();
+    const actionsAfter = store.getActions();
+    expect(actionsAfter[0].type).toBe("contacts/edit");
+  });
 });
 
 function clickOnAddContactButton() {
@@ -102,4 +118,15 @@ function clickOnContactAccordion() {
 
 function clickOnDeleteIconButton() {
   fireEvent.click(screen.getAllByLabelText(/delete/i)[0]);
+}
+
+function clickOnFirstEditIconButton() {
+  fireEvent.click(screen.getAllByLabelText(/edit/i, { exact: true })[1]);
+}
+
+function clickOnEditSubmitButton() {
+  const allEditButtons = screen.getAllByText(/Edit$/, { exact: true });
+  expect(allEditButtons.length).toBe(2);
+  const editButton = allEditButtons[1];
+  fireEvent.click(editButton);
 }

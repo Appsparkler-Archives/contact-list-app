@@ -7,13 +7,23 @@ import {
 } from "@testing-library/react";
 import { ContactForm } from "./ContactForm";
 import { IContactFormData } from "types";
-import { contactsData } from "data";
 
 jest.useFakeTimers();
 
 const onSubmit = jest.fn();
 const onCancel = jest.fn();
-const contact: IContactFormData = contactsData.variant1[0];
+const contact: IContactFormData = {
+  id: "7cb1248c-983a-4207-a59f-40bfa1fae564",
+  name: "Ali Connors",
+  gender: "male",
+  mobile: "+9282822223",
+  email: "ali.connors@whatsapp.com",
+  type: "business",
+  imgUrl:
+    "https://plus.unsplash.com/premium_photo-1671641797679-3b680a7d2109?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60",
+  company: "SurveyHeart",
+  address: "UK",
+};
 const ContactFormRenderer = () => (
   <ContactForm
     onSubmit={onSubmit}

@@ -1,11 +1,14 @@
 import { IContactFormData } from "types";
 
-export type TContactFormFC = React.FC<{
+export interface TContactFormFCProps {
+  onSubmit: (contact: IContactFormData) => void;
+  formType: "Create" | "Edit";
+  onCancel?: () => void;
+  //
+  TriggerButton: React.FC<{
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+  }>;
   contact: IContactFormData;
-  submitBtnTitle: string;
-  formTitle: string;
+}
 
-  // event handlers
-  onSubmit: (contactData: IContactFormData) => void;
-  onCancel: () => void;
-}>;
+export type TContactFormFC = React.FC<TContactFormFCProps>;

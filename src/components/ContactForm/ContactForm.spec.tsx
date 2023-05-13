@@ -1,121 +1,141 @@
-import renderer from "react-test-renderer";
-import { IContactFormData } from "types/data/contactForm";
-import { clone, noop } from "lodash/fp";
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
 import { ContactForm } from "./ContactForm";
-import { act, fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { IContactFormData } from "types";
 
-const handleCancel = jest.fn();
-const handleSubmit = jest.fn();
+jest.useFakeTimers();
 
-const createContactDefaultData: IContactFormData = {
-  gender: "female",
-  mobile: "",
-  name: "",
-  type: "personal",
-  address: "",
-  company: "",
-  email: "",
+const onSubmit = jest.fn();
+const onCancel = jest.fn();
+const contact: IContactFormData = {
+  id: "7cb1248c-983a-4207-a59f-40bfa1fae564",
+  name: "Ali Connors",
+  gender: "male",
+  mobile: "+9282822223",
+  email: "ali.connors@whatsapp.com",
+  type: "business",
+  imgUrl:
+    "https://plus.unsplash.com/premium_photo-1671641797679-3b680a7d2109?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60",
+  company: "SurveyHeart",
+  address: "UK",
 };
+const ContactFormRenderer = () => (
+  <ContactForm
+    onSubmit={onSubmit}
+    onCancel={onCancel}
+    formType={"Create"}
+    TriggerButton={({ onClick }) => (
+      <button onClick={onClick}>Click This</button>
+    )}
+    contact={contact}
+  />
+);
 
-describe("ContactForm component", () => {
-  test("match snapshot", async () => {
-    const contact: IContactFormData = {
-      name: "",
-      gender: "male",
-      mobile: "",
-      type: "business",
-    };
-    const component = renderer.create(
-      <ContactForm
-        contact={contact}
-        submitBtnTitle={"Edit"}
-        formTitle={"Edit Contact"}
-        onSubmit={noop}
-        onCancel={noop}
-      />
-    );
-    const snapshot = component.toJSON();
-    expect(snapshot).toMatchSnapshot();
+describe("ContactForm - Snapshot Tests", () => {
+  it("renders correctly when modal is closed", () => {
+    const { container } = render(<ContactFormRenderer />);
+    expect(container).toMatchSnapshot();
   });
 
-  test("it should update the name field when changed", async () => {
-    render(
-      <ContactForm
-        contact={createContactDefaultData}
-        formTitle="Create Contact"
-        onCancel={handleCancel}
-        onSubmit={handleSubmit}
-        submitBtnTitle={"Create"}
-      />
-    );
-
-    const nameField = screen.getByLabelText(/Name/);
-    expect(nameField).toBeTruthy();
-    fireEvent.change(nameField, {
-      target: { value: "Aakash" },
-    });
-    expect(nameField).toHaveValue("Aakash");
-  });
-
-  test("it should call onSubmit with contact-form-data when the form is submitted", async () => {
-    render(
-      <ContactForm
-        contact={clone(createContactDefaultData)}
-        submitBtnTitle={"Create"}
-        formTitle={"Create Contact"}
-        onSubmit={handleSubmit}
-        onCancel={handleCancel}
-      />
-    );
-    const updatedContact: IContactFormData = {
-      name: "John Smith",
-      mobile: "+91-333-333-443",
-      company: "PS",
-      address: "UK",
-      gender: "male",
-      type: "business",
-      email: "jonh.smith@dxc.com",
-    };
-    const nameField = screen.getByLabelText(/Name/);
-    fireEvent.change(nameField, { target: { value: updatedContact.name } });
-
-    const mobileField = screen.getByLabelText(/Mobile/);
-    fireEvent.change(mobileField, { target: { value: updatedContact.mobile } });
-    const addressField = screen.getByLabelText(/Address/);
-    fireEvent.change(addressField, {
-      target: { value: updatedContact.address },
-    });
-
-    const companyField = screen.getByLabelText(/Company/);
-    fireEvent.change(companyField, {
-      target: { value: updatedContact.company },
-    });
-
-    const genderSelectField = screen.getByRole("button", { name: /Female/ });
-    fireEvent.mouseDown(genderSelectField);
-    fireEvent.click(screen.getByText("Male"));
-
-    const typeSelectField = screen.getByRole("button", { name: /Type/ });
-    fireEvent.mouseDown(typeSelectField);
-    fireEvent.click(screen.getByText("Business"));
-
-    // update email field and press enter
-    const emailField = screen.getByLabelText(/Email/);
-    // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.type(emailField, `${updatedContact.email}[Enter]`);
-    });
-    expect(handleSubmit).toHaveBeenCalledWith(updatedContact);
-
-    // click on submit to call handleSubmit appropriately
-    const createButton = screen.getByRole("button", { name: "Create" });
-    fireEvent.click(createButton);
-    expect(handleSubmit).toHaveBeenCalledWith(updatedContact);
-
-    // click on cancel should call the onCancel
-    const cancelButton = screen.getByRole("button", { name: /Cancel/ });
-    fireEvent.click(cancelButton);
-    expect(handleCancel).toHaveBeenCalled();
+  it("renders correctly when modal is opened", () => {
+    const { baseElement } = render(<ContactFormRenderer />);
+    clickOnTriggerButton();
+    expect(baseElement).toMatchSnapshot();
   });
 });
+
+afterEach(cleanup);
+
+describe("ContactForm - Functional Tests", () => {
+  it("opens Dialog when TriggerButton is clicked", () => {
+    render(<ContactFormRenderer />);
+    clickOnTriggerButton();
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+  });
+
+  it("closes dialog when close button is clicked", async () => {
+    render(<ContactFormRenderer />);
+    clickOnTriggerButton();
+    clickOnCloseButton();
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(screen.queryByText(/create contact/i)).not.toBeInTheDocument();
+  });
+
+  it("closes Dialog when cancel button is clicked", () => {
+    render(<ContactFormRenderer />);
+    clickOnTriggerButton();
+    clickOnCancelButton();
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(screen.queryByText(/create contact/i)).not.toBeInTheDocument();
+    expect(onCancel).toHaveBeenCalled();
+  });
+
+  it("calls onSubmit function with form data when form is submitted", () => {
+    const updatedContact: IContactFormData = {
+      ...contact,
+      //
+      name: "Jhon Doe",
+      email: "johndoe@example.com",
+      company: "Google",
+      address: "UK",
+      mobile: "9999",
+      //
+    };
+    render(<ContactFormRenderer />);
+    clickOnTriggerButton();
+    changeTextField(/Name/i, updatedContact.name);
+    changeTextField(/Email/i, String(updatedContact.email));
+    changeTextField(/Mobile/i, String(updatedContact.mobile));
+    changeTextField(/Company/i, String(updatedContact.company));
+    changeTextField(/Address/i, String(updatedContact.address));
+    clickOnFirstCreateButton();
+    expect(onSubmit).toHaveBeenCalledWith(updatedContact);
+  });
+
+  it("calls onCancel function when cancel button is clicked", () => {
+    render(<ContactFormRenderer />);
+    clickOnTriggerButton();
+    clickOnCancelButton();
+    expect(onCancel).toHaveBeenCalled();
+  });
+
+  //   it("validates required fields when form is submitted", () => {
+  //     const { getByRole, getByLabelText, getByText } = render(
+  //       <ContactForm onSubmit={onSubmit} />
+  //     );
+  //     fireEvent.click(getByRole("button", { name: /contact us/i }));
+  //     fireEvent.click(getByRole("button", { name: /submit/i }));
+  //     expect(getByText("First Name is required.")).toBeInTheDocument();
+  //     expect(getByText("Last Name is required.")).toBeInTheDocument();
+  //     expect(getByText("Email is required.")).toBeInTheDocument();
+  //   });
+});
+
+function changeTextField(label: RegExp, value: string) {
+  fireEvent.change(screen.getByLabelText(label), {
+    target: { value },
+  });
+}
+
+function clickOnTriggerButton() {
+  fireEvent.click(screen.getByRole("button", { name: /Click This/i }));
+}
+function clickOnCloseButton() {
+  const closeButton = screen.getByRole("button", { name: /close/i });
+  fireEvent.click(closeButton);
+}
+function clickOnCancelButton() {
+  fireEvent.click(screen.getByRole("button", { name: /cancel/i }));
+}
+function clickOnFirstCreateButton() {
+  fireEvent.click(screen.getAllByRole("button", { name: /Create/i })[0]);
+}

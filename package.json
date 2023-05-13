@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@emotion/styled": "^11.10.8",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
@@ -14,6 +16,7 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -23,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -66,11 +70,30 @@
     "@testing-library/react": "^13.4.0",
     "@types/lodash": "^4.14.194",
     "@types/react-test-renderer": "^18.0.0",
+    "@types/redux-mock-store": "^1.0.3",
     "@types/testing-library__jest-dom": "^5.14.5",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^18.2.0",
+    "redux-mock-store": "^1.5.4",
     "storybook": "^7.0.7",
     "webpack": "^5.81.0"
+  },
+  "jest": {
+    "resetMocks": false,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/App.stories.tsx",
+      "<rootDir>/src/components/ViewContactModal/ViewContactModal.stories.tsx",
+      "<rootDir>/src/components/StandardSelectField/StandardSelectField.stories.tsx",
+      "<rootDir>/src/components/EditContactForm/EditContactForm.stories.tsx",
+      "<rootDir>/src/components/DeleteContact/DeleteContact.stories.tsx",
+      "<rootDir>/src/components/CreateContactForm/CreateContact.stories.tsx",
+      "<rootDir>/src/components/ContactListAccordion/ContactListAccordion.stories.tsx",
+      "<rootDir>/src/components/ContactForm/ContactForm.stories.tsx",
+      "<rootDir>/src/app/hooks.ts",
+      "<rootDir>/src/reportWebVitals.ts",
+      "<rootDir>/src/index.tsx"
+    ]
   }
 }

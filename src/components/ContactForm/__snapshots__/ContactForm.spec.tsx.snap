@@ -152,7 +152,7 @@ exports[`ContactForm - Snapshot Tests renders correctly when modal is opened 1`]
                   id=":r3:"
                   name="mobile"
                   required=""
-                  type="text"
+                  type="tel"
                   value="+9282822223"
                 />
               </div>
@@ -176,7 +176,7 @@ exports[`ContactForm - Snapshot Tests renders correctly when modal is opened 1`]
                   class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
                   id=":r4:"
                   name="email"
-                  type="text"
+                  type="email"
                   value="ali.connors@whatsapp.com"
                 />
               </div>

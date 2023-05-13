@@ -1580,7 +1580,7 @@ exports[`ConnectedApp - Snapshot Tests should match snapshot after opening add n
                   id=":rl:"
                   name="mobile"
                   required=""
-                  type="text"
+                  type="tel"
                   value=""
                 />
               </div>
@@ -1604,7 +1604,7 @@ exports[`ConnectedApp - Snapshot Tests should match snapshot after opening add n
                   class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
                   id=":rm:"
                   name="email"
-                  type="text"
+                  type="email"
                   value=""
                 />
               </div>

@@ -88,6 +88,7 @@ export const ContactForm: TContactFormFC = ({
           {/* Create Contact Form Fields */}
           <Box gap={2} p={2} flexDirection={"column"} display={"flex"}>
             <TextField
+              type="text"
               autoFocus
               fullWidth
               label="Name"
@@ -98,6 +99,7 @@ export const ContactForm: TContactFormFC = ({
             />
             <TextField
               fullWidth
+              type="tel"
               label="Mobile"
               variant="standard"
               name="mobile"
@@ -106,12 +108,14 @@ export const ContactForm: TContactFormFC = ({
             />
             <TextField
               fullWidth
+              type="email"
               label="Email"
               variant="standard"
               defaultValue={contact.email}
               name="email"
             />
             <TextField
+              type="text"
               fullWidth
               label="Address"
               variant="standard"
@@ -140,6 +144,7 @@ export const ContactForm: TContactFormFC = ({
             />
             <TextField
               fullWidth
+              type="text"
               label="Company"
               variant="standard"
               defaultValue={contact.company}
